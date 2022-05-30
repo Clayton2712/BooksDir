@@ -7,8 +7,7 @@ var app = express();
 var corOptions = {
     origin: "http://localhost:8081"
 }
-// console.log("http://localhost:8081");
-// console.log('The project is running');
+
 
 app.use(cors(corOptions));
 //app object is instantiated on creation of express server
@@ -17,25 +16,10 @@ app.use(cors(corOptions));
 //parse requests of content type application/json
 app.use(express.json());
 
-//
 app.use(express.urlencoded({extended: true}));
 
-
-
-//simple route
-app.get('/', (req, res) => {
-    res.json({message: 'Welcome to the world of Node JS!'})
-});
-
-// another route
-// app.get('/alt-route', (req, res) => {
-//     res.json({message: 'An alternate route\'s response.'})
-// });
-
-
-
-
-require("./app/routes/tutorialRoutes");
+//Set source of routes
+require("./app/routes/booksDirRoutes");
 
 //set port, listens for request
 const PORT = process.env.PORT || 8081;
@@ -45,14 +29,7 @@ app.listen(PORT,()=>{
     console.log(`http://localhost:${PORT}`);
 });
 
-require("./app/routes/tutorialRoutes.js")(app);
+require("./app/routes/booksDirRoutes.js")(app);
 
-//Create MySQL Database with WAMPServer
-/*
-CREATE TABLE IF NOT EXISTS nodejsapi (
-    id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    title varchar(225) NOT NULL,
-    description varchar(255),
-    published BOOLEAN DEFAULT false);
-*/
+
 require('./app/modules/db');
