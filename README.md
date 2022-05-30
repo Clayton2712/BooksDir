@@ -1,6 +1,4 @@
 # BooksDir
-Project Date: 27 May 2022
-Project Presentation Date: 3 June 2022
 
 Books Directory Project
 
@@ -18,3 +16,9 @@ Search for the required book.
 Option which lists all the authors and genres.
 Ensuring whether proper API calls are made and routes are connected.
 Technologies to use: Nodejs, Express, MySQL.
+
+DB Name: BooksDir.
+DB Tables: books, genres, authors.
+
+Project Date: 27 May 2022
+Project Presentation Date: 3 June 2022
