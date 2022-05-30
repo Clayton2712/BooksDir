@@ -18,6 +18,11 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended: true}));
 
+//simple route
+app.get('/', (req, res) => {
+    res.json({message: 'Welcome to the world of Node JS!'})
+});
+
 //Set source of routes
 require("./app/routes/booksDirRoutes");
 
