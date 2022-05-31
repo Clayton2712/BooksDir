@@ -1,7 +1,7 @@
-const Tutorial = require("../modules/booksDirModel.js");
+const Book = require("../modules/booksDirModel.js");
 const {} = require("express");
 
-//Create and save a new Tutorial
+//Create and save a new Book
 exports.create = (req, res) => {
     //Validation
     if(!req.body) {
@@ -9,17 +9,17 @@ exports.create = (req, res) => {
             message: "Content can not be empty!"
         });
     }
-    //Create Tutorial
-    const tutorial = new Tutorial({
+    //Create Book
+    const book = new Book({
         title: req.body.title,
         description: req.body.description,
         published: req.body.published || false
     });
-    //Save tutorial in database
-    Tutorial.create(tutorial, (err, data) => {
+    //Save book in database
+    Book.create(book, (err, data) => {
         if(err)
         res.status(500).send({
-            message: err.message || "Some error occured while creating the Tutorial."
+            message: err.message || "Some error occured while creating the Book."
         });
         else res.send(data);
     });
@@ -28,7 +28,7 @@ exports.create = (req, res) => {
 //Retrieve all Tutorials from the database (with condition).
 exports.findAll = (req, res) => {
     const title = req.query.title;
-    Tutorial.getAll(title, (err, data) => {
+    Book.getAll(title, (err, data) => {
         if (err) 
             res.status(500).send({
                 message: err.message || "Some error occured while retrieving tutorials."
@@ -37,17 +37,17 @@ exports.findAll = (req, res) => {
     });
 };
 
-//Find single Tutorial with an ID
+//Find single Book with an ID
 exports.findOne = (req, res) => {
-    Tutorial.findById(req.params.id, (err, data) => {
+    Book.findById(req.params.id, (err, data) => {
         if (err) {
             if (err.kind === "not_found"){
                 res.status(404).send({
-                    message: `Not found Tutorial with ID: ${req.params.id}.`
+                    message: `Not found Book with ID: ${req.params.id}.`
                 });
             } else {
                 res.status(500).send({
-                    message: `Error retrieving Tutorial with ID: ${req.params.id}.`
+                    message: `Error retrieving Book with ID: ${req.params.id}.`
                 });
             }
         } else res.send(data);
@@ -62,18 +62,18 @@ exports.update = (req, res) => {
         });
     }
     console.log(req.body);
-    Tutorial.updateById(
+    Book.updateById(
         req.params.id,
-        new Tutorial(req.body),
+        new Book(req.body),
         (err, data) => {
             if(err) {
                 if (err.kind === "not_found") {
                     res.status(404).send({
-                        message: `Not found Tutorial with ID ${req.params.id}.`
+                        message: `Not found Book with ID ${req.params.id}.`
                     });
                 } else {
                     res.status(500).send({
-                        message: `Error updating Tutorial with ID ${req.params.id}.`
+                        message: `Error updating Book with ID ${req.params.id}.`
                     });
                 }
             }else res.send(data);
@@ -81,19 +81,19 @@ exports.update = (req, res) => {
     );
 };
 
-//Delete a tutorial by ID
+//Delete a book by ID
 exports.delete = (req, res) => {
-    Tutorial.remove(req.params.id, (err, data) => {
+    Book.remove(req.params.id, (err, data) => {
         if(err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `No tutorial found with ID: ${req.params.id}.` 
+                    message: `No book found with ID: ${req.params.id}.` 
                 });
             } else {
                 res.status(500).send({
-                    message: `Could not delete tutorial with id: ${req.params.id}`
+                    message: `Could not delete book with id: ${req.params.id}`
                 });
             }
-        } else res.send({message: `Tutorial deleted successfully!`});
+        } else res.send({message: `Book deleted successfully!`});
     });
 };

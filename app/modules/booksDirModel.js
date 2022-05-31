@@ -2,26 +2,26 @@ const { query } = require("express");
 const sql = require("./db.js");
 
 //constructor
-const Tutorial = function (tutorial) {
-    this.title = tutorial.title;
-    this.description = tutorial.description;
-    this.published = tutorial.published;
+const Book = function (book) {
+    this.title = book.title;
+    this.description = book.description;
+    this.published = book.published;
 };
 
-Tutorial.create = (newTutorial, result) => {
-    sql.query("INSERT INTO tutorials SET ?", newTutorial, (err, res) => {
+Book.create = (newTutorial, result) => {
+    sql.query("INSERT INTO books SET ?", newTutorial, (err, res) => {
         if(err) {
             console.log("error ", err);
             result(err, null);
             return;
         }
-        console.log("created tutorial: ", {id: res.insertId, ...newTutorial});
+        console.log("created book: ", {id: res.insertId, ...newTutorial});
         result(null, {id: res.insertId, ...newTutorial});
     });
 };
 
-Tutorial.getAll = (title, result) => {
-    let query = "SELECT * FROM tutorials";
+Book.getAll = (title, result) => {
+    let query = "SELECT * FROM books";
     if (title) {
         query += `WHERE title LIKE '%${title}%' `;
     }
@@ -31,15 +31,15 @@ Tutorial.getAll = (title, result) => {
             result(null, err);
             return;
         }
-        console.log("tutorials", res);
+        console.log("books", res);
         result(null, res);
     });
 };
 
-Tutorial.updateById = (id, tutorial, result) => {
+Book.updateById = (id, book, result) => {
     sql.query(
-        "UPDATE tutorials SET title = ?, description = ?, published = ? WHERE id = ?",
-        [tutorial.title, tutorial.description, tutorial.published, id],
+        "UPDATE books SET title = ?, description = ?, published = ? WHERE id = ?",
+        [book.title, book.description, book.published, id],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);
@@ -48,42 +48,42 @@ Tutorial.updateById = (id, tutorial, result) => {
             }
 
             if (res.affectedRows == 0) {
-                //Not found Tutorial with the ID
+                //Not found Book with the ID
                 result({ kind: "not_found"}, null);
                 return;
             }
-            console.log("Updated tutorial: ", {id: id, ...tutorial});
-            result(null, {id: id, ...tutorial});
+            console.log("Updated book: ", {id: id, ...book});
+            result(null, {id: id, ...book});
         }
     );
 };
 
-Tutorial.findById = (id, result) => {
-    sql.query(`SELECT * FROM tutorials WHERE id = ${id}`, (err, res) => {
+Book.findById = (id, result) => {
+    sql.query(`SELECT * FROM books WHERE id = ${id}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
             return;
         }
         if (res.length) {
-            console.log("found tutorial: ", res[0]);
+            console.log("found book: ", res[0]);
             result(null, res[0]);
             return;
         }
-        //not found tutorial with id
+        //not found book with id
         result({kind: "not_found"}, null);
     });
 };
 
-Tutorial.remove = (id, result) => {
-    sql.query("DELETE FROM tutorials WHERE id = ?", id, (err, res) => {
+Book.remove = (id, result) => {
+    sql.query("DELETE FROM books WHERE id = ?", id, (err, res) => {
         if(err) {
             console.log("error: ", err);
             result(null, err);
             return;
         }
         if(res.affectedRows == 0) {
-            //no tutorial found with ID
+            //no book found with ID
             result({kind: "not_found"}, null);
             return;
         }
@@ -92,4 +92,4 @@ Tutorial.remove = (id, result) => {
     });
 };
 
-module.exports = Tutorial;
+module.exports = Book;
