@@ -8,15 +8,15 @@ const Book = function (book) {
     this.published = book.published;
 };
 
-Book.create = (newTutorial, result) => {
-    sql.query("INSERT INTO books SET ?", newTutorial, (err, res) => {
+Book.create = (newBook, result) => {
+    sql.query("INSERT INTO books SET ?", newBook, (err, res) => {
         if(err) {
             console.log("error ", err);
             result(err, null);
             return;
         }
-        console.log("created book: ", {id: res.insertId, ...newTutorial});
-        result(null, {id: res.insertId, ...newTutorial});
+        console.log("created book: ", {id: res.insertId, ...newBook});
+        result(null, {id: res.insertId, ...newBook});
     });
 };
 
