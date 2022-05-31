@@ -1,25 +1,25 @@
 module.exports = app => {
-    const tutorials = require("../controllers/booksDirController.js");
+    const books = require("../controllers/booksDirController.js");
     var router = require("express").Router();
 
     //Create new Tutorial (Sample Data)
-    router.post("/", tutorials.create);
+    router.post("/", books.create);
 
-    //Retrieve all Tutorials (Sample Data)
-    router.get("/", tutorials.findAll);
+    //Retrieve all Tutorial (Sample Data)
+    router.get("/", books.findAll);
 
     //Update a tutorial with id
-    router.put("/:id", tutorials.update);
+    router.put("/:id", books.update);
 
     //Retrieve a single tutorial with id
-    router.get("/:id", tutorials.findOne);
+    router.get("/:id", books.findOne);
 
     //Delete a single tutorial with id
-    router.delete("/:id", tutorials.delete);
+    router.delete("/:id", books.delete);
 
     //TODO ON OWN
-    //router.get(":id", tutorials.findAllPublished);
+    //router.get(":id", books.findAllPublished);
 
-    app.use('/api/tutorials', router);
+    app.use('/api/books', router);
     
 };
