@@ -22,3 +22,23 @@ DB Tables: books, genres, authors.
 
 Project Date: 27 May 2022
 Project Presentation Date: 3 June 2022
+
+DB SQL:
+
+CREATE TABLE IF NOT EXISTS books (
+	bookID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(50) NOT NULL,
+	publishDate DATE,
+    authorID,
+    genreID
+	);
+
+CREATE TABLE IF NOT EXISTS genres (
+	genreID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	genre VARCHAR(50) NOT NULL
+	);
+
+CREATE TABLE IF NOT EXISTS authors (
+	authorID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	authorName VARCHAR(50) NOT NULL
+	);
