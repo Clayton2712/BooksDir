@@ -12,8 +12,8 @@ exports.create = (req, res) => {
     //Create Book
     const book = new Book({
         title: req.body.title,
-        description: req.body.description,
-        published: req.body.published || false
+        authorID: req.body.authorID || false,
+        genreID: req.body.genreID || false
     });
     //Save book in database
     Book.create(book, (err, data) => {
@@ -24,8 +24,9 @@ exports.create = (req, res) => {
         else res.send(data);
     });
 };
+//Done -----
 
-//Retrieve all Tutorials from the database (with condition).
+//Retrieve all Books from the database (with condition).
 exports.findAll = (req, res) => {
     const title = req.query.title;
     Book.getAll(title, (err, data) => {

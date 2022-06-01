@@ -43,3 +43,22 @@ CREATE TABLE IF NOT EXISTS authors (
 	authorID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	authorName VARCHAR(50) NOT NULL
 	);
+--Inserting Test genre, author and book into table.
+INSERT INTO genres (genre)
+VALUES ('TestGenre');
+
+INSERT INTO authors (authorName)
+VALUES ('TestAuthor');
+
+INSERT INTO books (title, authorID, genreID)
+VALUES ('TestBook', '1', '1');
+
+
+--Selecting all books with genre(opt) and author(opt).
+SELECT b.title, g.genre, a.authorName FROM books AS b
+LEFT JOIN genres AS g ON g.genreID = b.genreID
+LEFT JOIN authors AS a ON a.authorID = b.authorID;
+
+SELECT * FROM books AS b
+LEFT JOIN genres AS g ON g.genreID = b.genreID
+LEFT JOIN authors AS a ON a.authorID = b.authorID;
