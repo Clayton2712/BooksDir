@@ -8,7 +8,6 @@ var corOptions = {
     origin: "http://localhost:8081"
 }
 
-
 app.use(cors(corOptions));
 //app object is instantiated on creation of express server
 //use is a method to configure the middleware used by routes

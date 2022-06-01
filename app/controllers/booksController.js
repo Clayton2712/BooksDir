@@ -1,4 +1,4 @@
-const Book = require("../modules/booksDirModel.js");
+const Book = require("../modules/booksModel.js");
 const {} = require("express");
 
 //Create and save a new Book

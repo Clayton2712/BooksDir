@@ -1,5 +1,5 @@
 module.exports = app => {
-    const books = require("../controllers/booksDirController.js");
+    const books = require("../controllers/booksController.js");
     var router = require("express").Router();
 
     //Create new Tutorial (Sample Data)
@@ -17,6 +17,7 @@ module.exports = app => {
     //Delete a single tutorial with id
     router.delete("/:id", books.delete);
 
-    app.use('/api/books', router);
+
     
+    app.use('/api/books', router);
 };
