@@ -26,18 +26,6 @@ exports.create = (req, res) => {
 };
 //Done -----
 
-//Retrieve all Books from the database (with condition).
-exports.findAll = (req, res) => {
-    const title = req.query.title;
-    Book.getAll(title, (err, data) => {
-        if (err) 
-            res.status(500).send({
-                message: err.message || "Some error occured while retrieving book."
-            });
-        else res.send(data);
-    });
-};
-
 //Find single Book with an ID
 exports.findOne = (req, res) => {
     Book.findById(req.params.id, (err, data) => {

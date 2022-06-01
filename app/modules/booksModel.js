@@ -21,22 +21,6 @@ Book.create = (newBook, result) => {
 };
 //Done---
 
-Book.getAll = (title, result) => {
-    let query = "SELECT * FROM books";
-    if (title) {
-        query += `WHERE title LIKE '%${title}%' `;
-    }
-    sql.query(query, (err, res) => {
-        if(err) {
-            console.log("error", err);
-            result(null, err);
-            return;
-        }
-        console.log("books", res);
-        result(null, res);
-    });
-};
-
 Book.updateById = (bookID, book, result) => {
     sql.query(
         "UPDATE books SET title = ?, authorID = ?, genreID = ? WHERE bookID = ?",
