@@ -68,7 +68,6 @@ exports.update = (req, res) => {
         }
     );
 };
-//Done -----
 
 //Delete a book by ID
 exports.delete = (req, res) => {
