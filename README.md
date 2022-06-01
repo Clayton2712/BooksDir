@@ -28,9 +28,10 @@ DB SQL:
 CREATE TABLE IF NOT EXISTS books (
 	bookID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	title VARCHAR(50) NOT NULL,
-	publishDate DATE,
-    authorID,
-    genreID
+    authorID INT,
+    genreID INT,
+	FOREIGN KEY (authorID) REFERENCES authors(authorID),
+	FOREIGN KEY (genreID) REFERENCES genres(genreID)
 	);
 
 CREATE TABLE IF NOT EXISTS genres (
