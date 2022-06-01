@@ -5,9 +5,6 @@ module.exports = app => {
     //Create new book (Sample Data)
     router.post("/", books.create);
 
-    //Retrieve all books (Sample Data)
-    router.get("/", books.findAll);
-
     //Update a book with id
     router.put("/:id", books.update);
 
@@ -17,7 +14,8 @@ module.exports = app => {
     //Delete a single book with id
     router.delete("/:id", books.delete);
 
-
+    //Make FIND ALL
+    //router.get("/", books.findOne);
 
     app.use('/api/books', router);
 };
