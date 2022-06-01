@@ -23,7 +23,7 @@ DB Tables: books, genres, authors.
 Project Date: 27 May 2022
 Project Presentation Date: 3 June 2022
 
-DB SQL:
+DB MySQL:
 
 CREATE TABLE IF NOT EXISTS books (
 	bookID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -59,6 +59,13 @@ SELECT b.title, g.genre, a.authorName FROM books AS b
 LEFT JOIN genres AS g ON g.genreID = b.genreID
 LEFT JOIN authors AS a ON a.authorID = b.authorID;
 
+--Selecting everything
 SELECT * FROM books AS b
 LEFT JOIN genres AS g ON g.genreID = b.genreID
 LEFT JOIN authors AS a ON a.authorID = b.authorID;
+
+--Deleting a record
+DELETE FROM books WHERE bookID = ;
+
+INSERT INTO books (title)
+VALUES ('Test Book');
