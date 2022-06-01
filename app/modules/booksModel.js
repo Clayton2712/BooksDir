@@ -36,7 +36,6 @@ Book.findByTitle = (bookTitle, result) => {
         result({kind: "not_found"}, null);
     });
 };
-//Done---
 
 Book.updateById = (bookID, book, result) => {
     sql.query(
@@ -59,6 +58,7 @@ Book.updateById = (bookID, book, result) => {
         }
     );
 };
+//Done---
 
 Book.remove = (bookID, result) => {
     sql.query("DELETE FROM books WHERE bookID = ?", bookID, (err, res) => {

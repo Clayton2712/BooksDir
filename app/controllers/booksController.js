@@ -41,7 +41,6 @@ exports.findOne = (req, res) => {
         } else res.send(data);
     });
 };
-//Done -----
 
 exports.update = (req, res) => {
     //Validation request
@@ -52,35 +51,36 @@ exports.update = (req, res) => {
     }
     console.log(req.body);
     Book.updateById(
-        req.params.id,
+        req.params.bookID,
         new Book(req.body),
         (err, data) => {
             if(err) {
                 if (err.kind === "not_found") {
                     res.status(404).send({
-                        message: `Not found Book with ID ${req.params.id}.`
+                        message: `Not found Book with ID ${req.params.bookID}.`
                     });
                 } else {
                     res.status(500).send({
-                        message: `Error updating Book with ID ${req.params.id}.`
+                        message: `Error updating Book with ID ${req.params.bookID}.`
                     });
                 }
             }else res.send(data);
         }
     );
 };
+//Done -----
 
 //Delete a book by ID
 exports.delete = (req, res) => {
-    Book.remove(req.params.id, (err, data) => {
+    Book.remove(req.params.bookID, (err, data) => {
         if(err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `No book found with ID: ${req.params.id}.` 
+                    message: `No book found with ID: ${req.params.bookID}.` 
                 });
             } else {
                 res.status(500).send({
-                    message: `Could not delete book with id: ${req.params.id}`
+                    message: `Could not delete book with ID: ${req.params.bookID}`
                 });
             }
         } else res.send({message: `Book deleted successfully!`});
