@@ -32,7 +32,7 @@ exports.findAll = (req, res) => {
     Book.getAll(title, (err, data) => {
         if (err) 
             res.status(500).send({
-                message: err.message || "Some error occured while retrieving tutorials."
+                message: err.message || "Some error occured while retrieving book."
             });
         else res.send(data);
     });
