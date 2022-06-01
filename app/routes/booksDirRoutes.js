@@ -17,9 +17,6 @@ module.exports = app => {
     //Delete a single tutorial with id
     router.delete("/:id", books.delete);
 
-    //TODO ON OWN
-    //router.get(":id", books.findAllPublished);
-
     app.use('/api/books', router);
     
 };
