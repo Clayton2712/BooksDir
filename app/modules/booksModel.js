@@ -19,6 +19,23 @@ Book.create = (newBook, result) => {
         result(null, {bookID: res.insertId, ...newBook});
     });
 };
+
+Book.findByTitle = (bookTitle, result) => {
+    sql.query(`SELECT * FROM books WHERE title = '${bookTitle}'`, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+        if (res.length) {
+            console.log("found book: ", res[0]);
+            result(null, res[0]);
+            return;
+        }
+        //not found book with bookTitle
+        result({kind: "not_found"}, null);
+    });
+};
 //Done---
 
 Book.updateById = (bookID, book, result) => {
@@ -41,23 +58,6 @@ Book.updateById = (bookID, book, result) => {
             result(null, {bookID: bookID, ...book});
         }
     );
-};
-
-Book.findById = (bookID, result) => {
-    sql.query(`SELECT * FROM books WHERE bookID = ${bookID}`, (err, res) => {
-        if (err) {
-            console.log("error: ", err);
-            result(err, null);
-            return;
-        }
-        if (res.length) {
-            console.log("found book: ", res[0]);
-            result(null, res[0]);
-            return;
-        }
-        //not found book with bookID
-        result({kind: "not_found"}, null);
-    });
 };
 
 Book.remove = (bookID, result) => {

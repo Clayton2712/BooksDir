@@ -9,7 +9,7 @@ module.exports = app => {
     router.put("/:id", books.update);
 
     //Retrieve a single book with id
-    router.get("/:id", books.findOne);
+    router.get("/:title", books.findOne);
 
     //Delete a single book with id
     router.delete("/:id", books.delete);

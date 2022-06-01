@@ -24,24 +24,24 @@ exports.create = (req, res) => {
         else res.send(data);
     });
 };
-//Done -----
 
-//Find single Book with an ID
+//Find single Book with an Title
 exports.findOne = (req, res) => {
-    Book.findById(req.params.id, (err, data) => {
+    Book.findByTitle(req.params.title, (err, data) => {
         if (err) {
             if (err.kind === "not_found"){
                 res.status(404).send({
-                    message: `Not found Book with ID: ${req.params.id}.`
+                    message: `Not found Book with title: '${req.params.title}'.`
                 });
             } else {
                 res.status(500).send({
-                    message: `Error retrieving Book with ID: ${req.params.id}.`
+                    message: `Error retrieving Book with title: '${req.params.title}'.`
                 });
             }
         } else res.send(data);
     });
 };
+//Done -----
 
 exports.update = (req, res) => {
     //Validation request
