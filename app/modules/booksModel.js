@@ -72,7 +72,7 @@ Book.remove = (bookID, result) => {
             result({kind: "not_found"}, null);
             return;
         }
-        console.log(`Deleted record with ID: ${bookID}`);
+        console.log(`Deleted book with ID: ${bookID}`);
         result(null, res);
     });
 };
