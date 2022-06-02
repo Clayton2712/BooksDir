@@ -1,4 +1,4 @@
-const All = require("../modules/AllModel.js");
+const All = require("../models/AllModel.js");
 const {} = require("express");
 
 

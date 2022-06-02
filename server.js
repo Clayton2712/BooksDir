@@ -36,4 +36,4 @@ app.listen(PORT,()=>{
 require("./app/routes/booksDirRoutes.js")(app);
 
 
-require('./app/modules/db');
+require('./app/models/db');

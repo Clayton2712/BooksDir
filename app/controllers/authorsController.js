@@ -1,4 +1,4 @@
-const Author = require("../modules/authorsModel.js");
+const Author = require("../models/authorsModel.js");
 const {} = require("express");
 
 //Create and save a new Author

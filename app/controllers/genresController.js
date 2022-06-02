@@ -1,4 +1,4 @@
-const Genre = require("../modules/genresModel.js");
+const Genre = require("../models/genresModel.js");
 const {} = require("express");
 
 //Create and save a new Genre
