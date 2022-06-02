@@ -2,7 +2,7 @@ module.exports = app => {
     const books = require("../controllers/booksController.js");
     const genres = require("../controllers/genresController.js");
     const authors = require("../controllers/authorsController.js");
-    const all = require("../controllers/AllController.js");
+    const all = require("../controllers/allController.js");
     var router = require("express").Router();
 
     //Create new x (Sample Data)
@@ -26,7 +26,7 @@ module.exports = app => {
     router.delete("/genres/:genreID", genres.delete);
 
     //Make FIND ALL
-    router.get("/all", all.findAll);
+    router.get("/allBooks", all.findAll);
 
     app.use('/api', router);
 };

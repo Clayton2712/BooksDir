@@ -4,11 +4,9 @@ const sql = require("./db.js");
 //constructor
 const All = function () {};
 
-
-
 All.getAll = (result) => {
     sql.query(
-        `SELECT b.title, g.genreID, g.genre, a.authorID, a.authorName FROM books AS b
+        `SELECT b.bookID, b.title, g.genreID, g.genre, a.authorID, a.authorName FROM books AS b
         LEFT JOIN genres AS g ON g.genreID = b.genreID
         LEFT JOIN authors AS a ON a.authorID = b.authorID;`,
         (err, res) => {
