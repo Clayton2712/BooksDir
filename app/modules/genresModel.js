@@ -4,8 +4,6 @@ const sql = require("./db.js");
 //constructor
 const Genre = function (genre) {
     this.genre = genre.genre;
-    this.authorID = genre.authorID;
-    this.genreID = genre.genreID;
 };
 
 Genre.create = (newGenre, result) => {
