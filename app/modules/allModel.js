@@ -8,7 +8,7 @@ const All = function () {};
 
 All.getAll = (result) => {
     sql.query(
-        `SELECT b.title, g.genre, a.authorName FROM books AS b
+        `SELECT b.title, g.genreID, g.genre, a.authorID, a.authorName FROM books AS b
         LEFT JOIN genres AS g ON g.genreID = b.genreID
         LEFT JOIN authors AS a ON a.authorID = b.authorID;`,
         (err, res) => {
@@ -18,8 +18,8 @@ All.getAll = (result) => {
             return;
         }
         if (res.length) {
-            console.log("returned ALL: ", res[0]);
-            result(null, res[0]);
+            console.log("returned ALL: ", res);
+            result(null, res);
             return;
         }
         //not found author with authorName
